@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar bg-base-100 shadow-sm border-b border-gray-100">
-      <div className="w-10/12 mx-auto flex justify-between items-center">
+      <div className="lg:w-10/12 w-full mx-auto flex justify-between items-center">
         {/* Navbar Start */}
         <div className="navbar-start">
           <div className="dropdown">
@@ -56,19 +56,24 @@ const Navbar = () => {
               {link}
             </ul>
           </div>
-          <div className="p-2">
-            <h1 className="font-bold">Md Soriful Hasan</h1>
+          <div className="hidden lg:block">
+            <img sizes="" src="/favicontow.png" alt="" />
           </div>
         </div>
 
         {/* Navbar Center */}
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 flex gap-6">{link}</ul>
+          <ul className="menu menu-horizontal px-1 flex gap-6">
+            {link}
+            <div className="block lg:hidden">
+              <img sizes="" src="/favicontow.png" alt="" />
+            </div>
+          </ul>
         </div>
 
         {/* Navbar End */}
         <div className="navbar-end">
-          <button className="px-4 py-2 text-sm bg-black text-white rounded hover:bg-gray-800">
+          <button className="hover:bg-[#e65309] px-4 py-2 text-sm bg-black text-white rounded cursor-pointer">
             Download CV
           </button>
         </div>

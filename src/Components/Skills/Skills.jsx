@@ -24,7 +24,7 @@ const Skills = () => {
       </div>
 
       {/* First Row */}
-      <div className="flex text-center mt-10 gap-4 flex-wrap">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 text-center mt-10 gap-4 ">
         <div className="border flex items-center justify-center gap-2 border-gray-200 font-semibold hover:border-[#e65309] flex-1 p-4 rounded-md bg-gray-100">
           <SiJavascript size={20} color="#e65309" />
           JavaScript
@@ -57,7 +57,7 @@ const Skills = () => {
       </div>
 
       {/* Second Row */}
-      <div className="flex text-center mt-10 gap-4 flex-wrap">
+      <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6  text-center mt-10 gap-4 ">
         <div className="border flex items-center justify-center gap-2 border-gray-200 font-semibold hover:border-[#e65309] flex-1 p-4 rounded-md bg-gray-100">
           <FaNodeJs size={20} color="#3c873a" />
           Node.js

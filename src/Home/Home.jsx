@@ -9,8 +9,7 @@ const Home = () => {
   return (
     <div className="">
       <Hero />
-      {/* <AboutMe /> */}
-
+      <AboutMe />
       <Skills />
       <Projects></Projects>
       <ContactMe />
