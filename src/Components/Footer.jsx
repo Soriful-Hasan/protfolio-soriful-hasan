@@ -5,8 +5,8 @@ import { FaLinkedinIn } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div>
-      <div className=" py-10 bg-gray-50">
+    <div className="border-t border-gray-100 ">
+      <div className=" py-10 bg-white">
         <div className="flex gap-4 justify-center">
           <div className="border p-2 rounded-full cursor-pointer border-gray-300 hover:bg-[#e65309] group">
             <a

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { FiPhone } from "react-icons/fi";
 import { MdOutlineEmail } from "react-icons/md";
+import Swal from "sweetalert2";
 
 const EmailSend = () => {
   const {
@@ -18,22 +19,33 @@ const EmailSend = () => {
         publicKey: "umlTwlQuN7B-MydYN",
       })
       .then(() => {
-        alert("Email sent successfully!");
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Send Email Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         reset();
       })
       .catch((error) => {
-        console.error("Email send error:", error);
-        alert("Failed to send email.");
+        Swal.fire({
+          position: "top-center",
+          icon: "error",
+          title: "Something was wrong",
+          showConfirmButton: false,
+          timer: 1500,
+        });
       });
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="lg:max-w-4xl mx-auto space-y-4 "
+      className=" lg:max-w-4xl mx-auto space-y-4 "
     >
       {/* Name */}
-      <div className="flex gap-4 w-full flex-col lg:flex-row">
+      <div className="flex  gap-4 w-full flex-col lg:flex-row">
         <div className=" flex-1">
           <label className="block font-semibold mb-1">
             Name <span className="text-[#e65309]">*</span>
@@ -49,7 +61,7 @@ const EmailSend = () => {
         </div>
 
         {/* Email */}
-        <div className="flex-1">
+        <div className="flex-1 ">
           <label className="block font-semibold mb-1">
             Email <span className="text-[#e65309]">*</span>
           </label>

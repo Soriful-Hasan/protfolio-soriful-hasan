@@ -1,56 +1,31 @@
-import React, { useState } from "react";
+import { Dialog } from "@headlessui/react";
+import React from "react";
+import { BsStack } from "react-icons/bs";
+import { MdDescription } from "react-icons/md";
 
-const Modal = ({ isOpen, onClose, project }) => {
-  if (!isOpen || !project) return null;
+const Modal = ({ onClose, name, data, isOpen, setIsOpen }) => {
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex items-center justify-center">
-      <div className="bg-white w-11/12 max-w-xl rounded-lg shadow-lg relative p-6">
-        <button
-          onClick={onClose}
-          className="absolute top-2 right-2 text-gray-500 hover:text-red-500 text-2xl"
-        >
-          &times;
-        </button>
-
-        <h2 className="text-2xl font-bold text-[#e65309] mb-4">
-          {project.name}
-        </h2>
-
-        <img
-          src={project.image}
-          alt={project.name}
-          className="w-full rounded-md mb-4"
-        />
-
-        <p className="text-gray-700 mb-4">{project.description}</p>
-
-        <div className="flex flex-wrap gap-2 mb-4">
-          {project.technology.map((tech, i) => (
-            <span key={i} className="px-3 py-1 bg-gray-200 text-sm rounded">
-              {tech.name}
-            </span>
-          ))}
+    <div className="">
+      <button
+        className="btn"
+        onClick={() => document.getElementById("my_modal_1").showModal()}
+      >
+        open modal
+      </button>
+      <dialog id="my_modal_1" className="modal">
+        <div className="modal-box ">
+          <h3 className="font-bold text-lg">Hello!</h3>
+          <p className="py-4 text-[5px]">
+            Press ESC key or click the button below to close
+          </p>
+          <div className="modal-action">
+            <form method="dialog">
+              {/* if there is a button in form, it will close the modal */}
+              <button className="btn">Close</button>
+            </form>
+          </div>
         </div>
-
-        <div className="flex justify-end gap-4">
-          <a
-            href={project.liveLink}
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-outline hover:bg-[#e65309] hover:text-white"
-          >
-            Live Site
-          </a>
-          <a
-            href={project.repo_link}
-            target="_blank"
-            rel="noreferrer"
-            className="btn btn-outline hover:bg-[#e65309] hover:text-white"
-          >
-            GitHub
-          </a>
-        </div>
-      </div>
+      </dialog>
     </div>
   );
 };

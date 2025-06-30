@@ -1,34 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router";
+import { Link } from "react-scroll";
 
 const Navbar = () => {
+  const [activLink, setActivLink] = useState("");
+
   const link = (
     <>
       <li>
-        <NavLink to="/" className="hover:text-blue-500">
+        <Link
+          to="home"
+          smooth={true}
+          duration={500}
+          offset={-70}
+          spy={true}
+          onClick={() => setActivLink("home")}
+          activeClass={
+            activLink === "home"
+              ? "font-bold border-b-2 border-[#e65309] pb-1"
+              : ""
+          }
+          className=" cursor-pointer"
+        >
           Home
-        </NavLink>
+        </Link>
       </li>
       <li>
-        <NavLink to="/about" className="hover:text-blue-500">
+        <Link
+          to="about"
+          smooth={true}
+          duration={500}
+          offset={-70}
+          spy={true}
+          onClick={() => setActivLink("about")}
+          activeClass={
+            activLink === "about"
+              ? "font-bold border-b-2 border-[#e65309] pb-1"
+              : ""
+          }
+          className="cursor-pointer"
+        >
           About
-        </NavLink>
+        </Link>
       </li>
       <li>
-        <NavLink to="/projects" className="hover:text-blue-500">
+        <Link
+          to="projects"
+          smooth={true}
+          duration={500}
+          offset={-70}
+          spy={true}
+          onClick={() => setActivLink("projects")}
+          activeClass={
+            activLink === "projects"
+              ? "font-bold border-b-2 border-[#e65309] pb-1"
+              : ""
+          }
+          className=" cursor-pointer"
+        >
           Projects
-        </NavLink>
+        </Link>
       </li>
       <li>
-        <NavLink to="/contact" className="hover:text-blue-500">
+        <Link
+          to="skills"
+          smooth={true}
+          duration={500}
+          offset={-70}
+          spy={true}
+          onClick={() => setActivLink("skills")}
+          activeClass={
+            activLink === "skills"
+              ? "font-bold border-b-2 border-[#e65309] pb-1"
+              : ""
+          }
+          className=" cursor-pointer"
+        >
+          Skills
+        </Link>
+      </li>
+      <li>
+        <Link
+          to="contact"
+          smooth={true}
+          duration={500}
+          offset={-70}
+          spy={true}
+          onClick={() => setActivLink("contact")}
+          activeClass={
+            activLink === "contact"
+              ? "font-bold border-b-2 border-[#e65309] pb-1"
+              : ""
+          }
+          className=" cursor-pointer"
+        >
           Contact
-        </NavLink>
+        </Link>
       </li>
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm border-b border-gray-100">
+    <div className="navbar sticky top-0 z-50 bg-white bg-opacity-5 backdrop-blur-lg border-opacity-20  shadow-sm border-b border-gray-100">
       <div className="lg:w-10/12 w-full mx-auto flex justify-between items-center">
         {/* Navbar Start */}
         <div className="navbar-start">
@@ -57,7 +130,7 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="hidden lg:block">
-            <img sizes="" src="/favicontow.png" alt="" />
+            <img sizes="" src="/logo.png" alt="" />
           </div>
         </div>
 
@@ -74,7 +147,9 @@ const Navbar = () => {
         {/* Navbar End */}
         <div className="navbar-end">
           <button className="hover:bg-[#e65309] px-4 py-2 text-sm bg-black text-white rounded cursor-pointer">
-            Download CV
+            <a href="/soriful-cv.pdf" download>
+              Download CV
+            </a>
           </button>
         </div>
       </div>
