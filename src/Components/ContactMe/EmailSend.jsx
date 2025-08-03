@@ -12,11 +12,14 @@ const EmailSend = () => {
     formState: { errors },
     reset,
   } = useForm();
+  const serviceKey = import.meta.env.VITE_SERVICE_KEY;
+  const templateKey = import.meta.env.VITE_TEMPLATE_KEY;
+  const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
   const onSubmit = (data) => {
     emailjs
-      .send("service_ir0139n", "template_v9c90el", data, {
-        publicKey: "umlTwlQuN7B-MydYN",
+      .send(`${serviceKey}`, `${templateKey}`, data, {
+        publicKey: `${publicKey}`,
       })
       .then(() => {
         Swal.fire({
@@ -36,34 +39,35 @@ const EmailSend = () => {
           showConfirmButton: false,
           timer: 1500,
         });
+        console.log(error);
       });
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className=" lg:max-w-4xl mx-auto space-y-4 "
+      className="lg:max-w-4xl mx-auto space-y-4"
     >
-      {/* Name */}
-      <div className="flex  gap-4 w-full flex-col lg:flex-row">
-        <div className=" flex-1">
-          <label className="block font-semibold mb-1">
-            Name <span className="text-[#e65309]">*</span>
+      {/* Name and Email */}
+      <div className="flex gap-4 w-full flex-col lg:flex-row">
+        <div className="flex-1">
+          <label className="block font-semibold mb-1 text-white">
+            Name <span className="text-red-400">*</span>
           </label>
           <input
             {...register("name", { required: "Name is required" })}
             placeholder="Your Name"
-            className="border p-3 border-gray-300 w-full"
+            className="bg-gray-800/50 backdrop-blur-sm border border-gray-600 text-white placeholder-gray-400 p-3 w-full rounded-2xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 hover:border-gray-500"
           />
           {errors.name && (
-            <p className="text-red-500 mt-1">{errors.name.message}</p>
+            <p className="text-red-400 mt-1 text-sm">{errors.name.message}</p>
           )}
         </div>
 
         {/* Email */}
-        <div className="flex-1 ">
-          <label className="block font-semibold mb-1">
-            Email <span className="text-[#e65309]">*</span>
+        <div className="flex-1">
+          <label className="block font-semibold mb-1 text-white">
+            Email <span className="text-red-400">*</span>
           </label>
           <input
             {...register("user_email", {
@@ -74,50 +78,40 @@ const EmailSend = () => {
               },
             })}
             placeholder="Your Email"
-            className="border p-3 border-gray-300 w-full"
+            className="bg-gray-800/50 backdrop-blur-sm border border-gray-600 text-white placeholder-gray-400 p-3 w-full rounded-2xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 hover:border-gray-500"
           />
           {errors.user_email && (
-            <p className="text-red-500 mt-1">{errors.user_email.message}</p>
+            <p className="text-red-400 mt-1 text-sm">
+              {errors.user_email.message}
+            </p>
           )}
         </div>
       </div>
 
       {/* Message */}
       <div>
-        <label className="block font-semibold mb-1">
-          Message <span className="text-[#e65309]">*</span>
+        <label className="block font-semibold mb-1 text-white">
+          Message <span className="text-red-400">*</span>
         </label>
         <textarea
           {...register("message", { required: "Message is required" })}
           placeholder="Your Message"
-          className="border p-4 border-gray-300 w-full"
+          rows="6"
+          className="bg-gray-800/50 backdrop-blur-sm border border-gray-600 text-white placeholder-gray-400 p-4 w-full rounded-2xl focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 transition-all duration-300 hover:border-gray-500 resize-none"
         />
         {errors.message && (
-          <p className="text-red-500 mt-1">{errors.message.message}</p>
+          <p className="text-red-400 mt-1 text-sm">{errors.message.message}</p>
         )}
       </div>
 
-      <div className=" flex lg:flex-row flex-col items-center justify-between">
+      <div className="flex lg:flex-row flex-col items-center justify-between">
         <button
           type="submit"
-          className="w-full lg:w-80 hover:bg-[#e65309] cursor-pointer  mt-6 px-6 py-3 bg-black text-white rounded  transition"
+          className="group  relative overflow-hidden w-full  px-6 py-3 bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold rounded-2xl shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 hover:scale-105 mt-6"
         >
-          Contact Me
+          <span className="relative z-10">Contact Me</span>
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </button>
-        <div className="lg:justify-center flex lg:flex-row flex-col items-start   w-full mt-10  lg:mt-6 lg:items-center gap-8">
-          <div className="flex items-center gap-2">
-            <div className=" rounded-full p-1 bg-[#e65309]">
-              <MdOutlineEmail size={15} color="white" />
-            </div>
-            <p className="text-sm  text-gray-600">sorifullhasan300@gmail.com</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="rounded-full p-1 bg-[#e65309]">
-              <FiPhone size={15} color="white" />
-            </div>
-            <p className="text-sm  text-gray-600">+8801835458727</p>
-          </div>
-        </div>
       </div>
     </form>
   );
